@@ -1,1 +1,4 @@
 /tests
+/build
+/dist
+aryx_batch_converter.spec
