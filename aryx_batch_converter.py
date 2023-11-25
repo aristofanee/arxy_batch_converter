@@ -1,9 +1,7 @@
 import zipfile
-import numpy as np
 from pandas import DataFrame
 from os import walk
 from os import mkdir
-from os import remove
 from tkinter.filedialog import askdirectory
 import struct
 
