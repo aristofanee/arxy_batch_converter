@@ -1,7 +1,6 @@
 import zipfile
 from pandas import DataFrame
-from os import walk
-from os import mkdir
+from os import walk, mkdir, listdir
 from tkinter.filedialog import askdirectory
 import struct
 
@@ -11,8 +10,19 @@ folder_to = askdirectory()
 
 dir_tree = walk(folder_from)
 
+number_of_aryx = 0
+
 for element in dir_tree:
-    new_folder = folder_to + "/export_csv/" + element[0].replace(folder_from,'').replace('\\','') + '/' 
+    for file_in_dir in element[2]:
+        if file_in_dir.endswith(".aryx"):
+            number_of_aryx += 1
+
+print(number_of_aryx)
+
+for element in dir_tree:
+
+    
+    new_folder = folder_to + "/export_csv" + element[0].replace('\\','/').replace(folder_from,'') + '/'
     mkdir(new_folder)
 
     for file_in_dir in element[2]:
