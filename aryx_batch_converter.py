@@ -3,7 +3,7 @@ from pandas import DataFrame
 from os import walk, makedirs, path
 from tkinter.filedialog import askdirectory
 from tkinter import Tk
-import struct
+from struct import calcsize, unpack
 from alive_progress import alive_bar
 
 
@@ -88,8 +88,8 @@ with alive_bar(number_of_aryx) as bar:
                                 file_bin = file_bin.read()
 
                                 #unpacking the bytes into a tuple
-                                num_doubles = len(file_bin) // struct.calcsize('d')
-                                data = struct.unpack('<' + 'd' * num_doubles, file_bin)
+                                num_doubles = len(file_bin) // calcsize('d')
+                                data = unpack('<' + 'd' * num_doubles, file_bin)
 
                                 #creating the array for the intensity and wavelengths 
                                 intens = data[::2]
